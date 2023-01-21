@@ -21,8 +21,10 @@ class Matrix:
         return (len(args), len(args[0]))
 
     def __add__(self, matrix):
-        # @todo check type
-        # @todo check shape
+        # if (isinstance(matrix, Matrix)):
+        #     raise ValueError("Value error: one of the sum term is not a Matrix instance")
+        if (self.shape != matrix.shape):
+            raise ArithmeticError("Matrix have different shape")
         try:
             result = Matrix(self.shape)
             for i in range(self.shape[0]):
@@ -31,10 +33,3 @@ class Matrix:
             return result
         except:
             raise AttributeError("sum error")
-
-
-if __name__ == '__main__':
-    M = Matrix([[0, 1], [0, 1]])
-    M2 = Matrix([[0, 1], [0, 1]])
-    res = M + M2
-    print(res.data)
