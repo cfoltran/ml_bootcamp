@@ -29,7 +29,36 @@ class Matrix:
             result = Matrix(self.shape)
             for i in range(self.shape[0]):
                 for j in range(self.shape[1]):
+                    result.data[i][j] = self.data[i][j] + matrix.data[i][j]
+            return result
+        except:
+            raise AttributeError("sum error")
+
+
+    def __radd__(self, matrix):
+        # if (isinstance(matrix, Matrix)):
+        #     raise ValueError("Value error: one of the sum term is not a Matrix instance")
+        if (self.shape != matrix.shape):
+            raise ArithmeticError("Matrix have different shape")
+        try:
+            result = Matrix(self.shape)
+            for i in range(self.shape[0]):
+                for j in range(self.shape[1]):
                     result.data[i][j] = matrix.data[i][j] + self.data[i][j]
+            return result
+        except:
+            raise AttributeError("sum error")
+
+    def __sub__(self, matrix):
+        # if (isinstance(matrix, Matrix)):
+        #     raise ValueError("Value error: one of the sum term is not a Matrix instance")
+        if (self.shape != matrix.shape):
+            raise ArithmeticError("Matrix have different shape")
+        try:
+            result = Matrix(self.shape)
+            for i in range(self.shape[0]):
+                for j in range(self.shape[1]):
+                    result.data[i][j] = self.data[i][j] - matrix.data[i][j]
             return result
         except:
             raise AttributeError("sum error")
