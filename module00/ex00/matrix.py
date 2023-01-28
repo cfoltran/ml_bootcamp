@@ -62,3 +62,25 @@ class Matrix:
             return result
         except:
             raise AttributeError("sum error")
+
+    def __mul__(self, rterm):
+        # if (isinstance(matrix, Matrix)):
+        #     raise ValueError("Value error: one of the sum term is not a Matrix instance")
+        try:
+            if isinstance(rterm, (int, float)):
+                result = Matrix(self.shape)
+                for i in range(self.shape[0]):
+                    for j in range(self.shape[1]):
+                        result.data[i][j] += self.data[i][j] * rterm
+                return result
+            # if self.shape[1] != rterm.shape[0]
+            #     raise ArrithmeticError("Shape are not compatible for dot matrix product")
+            result = Matrix((self.shape[0], rterm.shape[1]))
+            for i in range(self.shape[0]):
+                for j in range(rterm.shape[1]):
+                    for k in range(rterm.shape[0]):
+                        result.data[i][j] += self.data[i][k] * rterm.data[k][j]
+                        
+            return result
+        except:
+            raise AttributeError("sum error")
