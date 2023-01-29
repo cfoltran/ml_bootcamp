@@ -36,5 +36,19 @@ class MatrixSum(unittest.TestCase):
         res = m1 * m2
         self.assertEqual(res.data, [[12, 12], [9, 9]])
 
+    # def test_mul_invalid_shape(self):
+    #     m1 = matrix.Matrix([[3, 4, 5, 5]])
+    #     m2 = matrix.Matrix([[1, 1], [1, 1], [1, 1]])
+    #     with self.assertRaises(ArithmeticError):
+    #         m = m1 * m2
+            
+
+    def test_rmul_matrix(self):
+        m1 = matrix.Matrix([[3, 4, 5], [6, 2, 1]])
+        m2 = matrix.Matrix([[1, 1], [1, 1], [1, 1]])
+        res = m1.__rmul__(m2);
+        print(res.data)
+        # self.assertEqual(res.data, [[12, 12], [9, 9]])
+
 if __name__ == '__main__': 
     unittest.main()
