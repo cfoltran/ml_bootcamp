@@ -51,4 +51,7 @@ class MatrixSum(unittest.TestCase):
         # self.assertEqual(res.data, [[12, 12], [9, 9]])
 
 if __name__ == '__main__': 
-    unittest.main()
+    # unittest.main()
+    m1 = matrix.Matrix([[3, 4, 5], [6, 2, 1]])
+    print(m1.__str__())
+    # print(m1)

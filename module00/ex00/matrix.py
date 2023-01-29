@@ -102,3 +102,20 @@ class Matrix:
             return result
         except:
             raise AttributeError("sum error")
+
+
+    def __str__(self):
+        return self.__repr__()
+
+    def __repr__(self):
+        i = 0
+        r = 'Matrix(['
+        for l in self.data:
+            i += 1
+            if (i != len(self.data)):
+                r += str(l)
+                r += ',\n'
+            else:
+                r += '\t' + str(l)
+        return r
+        
