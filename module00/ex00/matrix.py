@@ -20,6 +20,13 @@ class Matrix:
             return args
         return (len(args), len(args[0]))
 
+    def T(self):
+        t = Matrix(self.shape[::-1])
+        for i in range(t.shape[0]):
+            for j in range(t.shape[1]):
+                t.data[i][j] = self.data[j][i]
+        return t
+
     def __add__(self, matrix):
         # if (isinstance(matrix, Matrix)):
         #     raise ValueError("Value error: one of the sum term is not a Matrix instance")
@@ -103,6 +110,25 @@ class Matrix:
         except:
             raise AttributeError("sum error")
 
+    def __truediv__(self, rterm):
+        try:
+            if isinstance(rterm, (int, float)):
+                result = Matrix(self.shape)
+                for i in range(self.shape[0]):
+                    for j in range(self.shape[1]):
+                        result.data[i][j] += self.data[i][j] / rterm
+                return result
+            if self.shape[1] != rterm.shape[0]:
+                raise ArithmeticError("Shape are not aligned")
+            result = Matrix((self.shape[0], rterm.shape[1]))
+            for i in range(self.shape[0]):
+                for j in range(rterm.shape[1]):
+                    for k in range(rterm.shape[0]):
+                        result.data[i][j] += self.data[i][k] / rterm.data[k][j]
+                        
+            return result
+        except:
+            raise AttributeError("sum error")
 
     def __str__(self):
         return self.__repr__()

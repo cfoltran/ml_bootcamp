@@ -47,11 +47,16 @@ class MatrixSum(unittest.TestCase):
         m1 = matrix.Matrix([[3, 4, 5], [6, 2, 1]])
         m2 = matrix.Matrix([[1, 1], [1, 1], [1, 1]])
         res = m1.__rmul__(m2);
+        self.assertEqual(res.data, [[12, 12], [9, 9]])
+
+    def test_truediv_matrix(self):
+        m1 = matrix.Matrix([[24, 32, 42], [62, 32, 14]])
+        m2 = matrix.Matrix([[2, 4], [6, 4], [2, 2]])
+        res = m1 / m2
         print(res.data)
-        # self.assertEqual(res.data, [[12, 12], [9, 9]])
 
 if __name__ == '__main__': 
     # unittest.main()
-    m1 = matrix.Matrix([[3, 4, 5], [6, 2, 1]])
-    print(m1.__str__())
-    # print(m1)
+    m1 = matrix.Matrix([[1, 2], [3, 4], [4, 5]])
+    m1.T()
+    print(m1.T())
