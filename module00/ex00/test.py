@@ -53,10 +53,11 @@ class MatrixSum(unittest.TestCase):
         m1 = matrix.Matrix([[24, 32, 42], [62, 32, 14]])
         m2 = matrix.Matrix([[2, 4], [6, 4], [2, 2]])
         res = m1 / m2
-        print(res.data)
+    
+    def test_t_matrix(self):
+        m = matrix.Matrix([[1, 2], [3, 4], [4, 5]])
+        self.assertEqual(m.T().data, [[1, 3, 4], [2, 4, 5]])
+
 
 if __name__ == '__main__': 
-    # unittest.main()
-    m1 = matrix.Matrix([[1, 2], [3, 4], [4, 5]])
-    m1.T()
-    print(m1.T())
+    unittest.main()
