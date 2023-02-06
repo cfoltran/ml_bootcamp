@@ -1,18 +1,15 @@
 import numpy as np
 
 class TinyStatistician:
-    def mean(arr):
+    def mean(data):
         try:
-            s = 0
-            for v in arr:
-                s += v
-            return s / len(arr)
+            return sum(data) / len(data)
         except:
             return None
 
-    def median(arr):
+    def median(data):
         try:
-            data_sorted = sorted(arr)
+            data_sorted = sorted(data)
             mid = len(data_sorted) // 2
 
             if (len(data_sorted) % 2 == 0):
@@ -21,9 +18,9 @@ class TinyStatistician:
         except:
             return None
 
-    def quartile(arr):
+    def quartile(data):
         try:
-            data_sorted = sorted(arr)
+            data_sorted = sorted(data)
             nlen = len(data_sorted)
             return [ data_sorted[nlen // 4], data_sorted[3 * (nlen // 4)] ]
         except:
@@ -41,5 +38,18 @@ class TinyStatistician:
         except:
             return None
 
+    def var(data):
+        try:
+            data = sorted(data)
+            return sum((x - TinyStatistician.mean(data)) ** 2 for x in data) / len(data)
+        except:
+            return None
+
+    def std(data):
+        try:
+            data = sorted(data)
+            return TinyStatistician.var(data) ** 0.5
+        except:
+            return None
+
 a = [1, 42, 300, 10, 59]
-print(TinyStatistician.percentile(a, 10))
