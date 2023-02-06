@@ -12,22 +12,34 @@ class TinyStatistician:
 
     def median(arr):
         try:
-            numbers = sorted(arr)
-            mid = len(numbers) // 2
+            data_sorted = sorted(arr)
+            mid = len(data_sorted) // 2
 
-            if (len(numbers) % 2 == 0):
-                return (numbers[mid - 1] + numbers[mid]) / 2
-            return numbers[mid]
+            if (len(data_sorted) % 2 == 0):
+                return (data_sorted[mid - 1] + data_sorted[mid]) / 2
+            return data_sorted[mid]
         except:
             return None
 
     def quartile(arr):
         try:
-            numbers = sorted(arr)
-            nlen = len(numbers)
-            return [ numbers[nlen // 4], numbers[3 * (nlen // 4)] ]
+            data_sorted = sorted(arr)
+            nlen = len(data_sorted)
+            return [ data_sorted[nlen // 4], data_sorted[3 * (nlen // 4)] ]
+        except:
+            return None
+
+    def percentile(data, p):
+        try:
+            data_sorted = sorted(data)
+            n = len(data_sorted)
+            p = (p * (n - 1) / 100) + 1
+            index = int(p)
+            residual = p - index
+            percentile = data_sorted[index - 1] + residual * (data_sorted[index] - data_sorted[index - 1])
+            return percentile
         except:
             return None
 
 a = [1, 42, 300, 10, 59]
-print(TinyStatistician.quartile(a))
+print(TinyStatistician.percentile(a, 10))
