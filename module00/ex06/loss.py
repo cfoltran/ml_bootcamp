@@ -49,7 +49,8 @@ def loss_(y, y_hat):
         This function should not raise any Exception.
     """
     try:
-        return np.sum(loss_elem_(y, y_hat))
+        return float(np.sum(loss_elem_(y, y_hat)) / (2 * y.shape[0]))
+        
     except:
         return None
 
@@ -58,4 +59,4 @@ x1 = np.array([[0.], [1.], [2.], [3.], [4.]])
 theta1 = np.array([[2.], [4.]])
 y_hat1 = predict_(x1, theta1)
 y1 = np.array([[2.], [7.], [12.], [17.], [22.]])
-print(loss_elem_(y1, y_hat1))
+print(loss_(y1, y_hat1))
