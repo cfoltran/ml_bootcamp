@@ -40,8 +40,8 @@ class TinyStatistician:
 
     def var(data):
         try:
-            data = sorted(data)
-            return sum((x - TinyStatistician.mean(data)) ** 2 for x in data) / len(data)
+            data = np.array(data)
+            return np.var(data)
         except:
             return None
 
